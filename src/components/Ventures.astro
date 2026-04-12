@@ -1,0 +1,48 @@
+---
+interface Venture {
+  name: string;
+  status: 'live' | 'beta';
+  url?: string;
+  description: string;
+}
+
+const ventures: Venture[] = [
+  {
+    name: 'Apollonia',
+    status: 'beta',
+    description:
+      'A 4K camera that mounts onto dental loupes, with an AR roadmap. Currently in beta with 5 clinicians, patent filed, applying to Startmate Winter 2026.',
+  },
+  {
+    name: 'DentalScribe',
+    status: 'live',
+    url: 'https://dentalscribe.io',
+    description:
+      'AI clinical documentation SaaS for dentists. Features ADA code lookup, Script Assist, and Post-Op instructions. $29/month.',
+  },
+];
+---
+
+<section class="space-y-3">
+  {ventures.map((v) => (
+    <div class="border border-line-soft rounded-sm p-5">
+      <div class="flex items-center gap-3 mb-2">
+        <h3 class="text-xl m-0">
+          {v.url ? (
+            <a href={v.url} target="_blank" rel="noopener noreferrer">{v.name}</a>
+          ) : (
+            v.name
+          )}
+        </h3>
+        <span class="inline-flex items-center gap-1.5 font-chrome">
+          <span
+            class={`w-1.5 h-1.5 rounded-full ${v.status === 'live' ? 'bg-moss animate-pulse' : 'bg-amber-500 animate-pulse'}`}
+            aria-hidden="true"
+          />
+          {v.status}
+        </span>
+      </div>
+      <p class="text-[15px] text-ink-soft m-0 leading-relaxed">{v.description}</p>
+    </div>
+  ))}
+</section>

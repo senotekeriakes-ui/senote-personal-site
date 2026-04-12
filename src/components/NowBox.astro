@@ -1,0 +1,23 @@
+---
+import { NOW_ITEMS, NOW_UPDATED } from '../data/now';
+---
+
+<section id="now" class="relative bg-paper-soft border border-line-soft rounded-sm p-6 mt-12" style="box-shadow: 2px 3px 0 var(--color-paper-shade);">
+  <span class="absolute -top-4 -left-2 text-2xl select-none" aria-hidden="true">📌</span>
+
+  <div class="flex items-baseline gap-3 mb-4">
+    <h2 class="text-2xl m-0">what i'm up to right now</h2>
+    <span class="font-chrome text-ink-faint bg-paper-shade px-2 py-0.5 rounded-sm">
+      {NOW_UPDATED}
+    </span>
+  </div>
+
+  <ul class="list-none p-0 m-0 space-y-2">
+    {NOW_ITEMS.map((item) => (
+      <li class="flex gap-2 text-[15px] leading-relaxed">
+        <span class="text-moss shrink-0" aria-hidden="true">→</span>
+        <span>{item.text}</span>
+      </li>
+    ))}
+  </ul>
+</section>

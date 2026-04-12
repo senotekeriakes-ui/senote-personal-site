@@ -1,0 +1,23 @@
+---
+import { NOTES, formatNoteDate } from '../data/notes';
+---
+
+<section id="notes">
+  <div class="space-y-0">
+    {NOTES.map((note, i) => (
+      <div class={`flex gap-4 py-3 ${i < NOTES.length - 1 ? 'border-b border-dashed border-line-soft' : ''}`}>
+        <span class="font-chrome text-ink-faint w-[90px] shrink-0 pt-0.5">
+          {formatNoteDate(note.date)}
+        </span>
+        <div class="min-w-0">
+          <a href={`#${note.slug}`} class="text-[15px] font-medium">
+            {note.title}
+          </a>
+          <span class="font-chrome text-ink-faint ml-2">
+            · {note.status} · {note.readTime}min
+          </span>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>

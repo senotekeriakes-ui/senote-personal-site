@@ -1,0 +1,133 @@
+@import "tailwindcss";
+
+/* ── Design tokens ── */
+@theme {
+  --color-paper: #faf6ef;
+  --color-paper-soft: #f3ede0;
+  --color-paper-shade: #ebe3d1;
+  --color-ink: #2a2520;
+  --color-ink-soft: #5a5048;
+  --color-ink-faint: #8a7f72;
+  --color-moss: #6b8158;
+  --color-berry: #c44a3d;
+  --color-line: rgba(42, 37, 32, 0.15);
+  --color-line-soft: rgba(42, 37, 32, 0.08);
+}
+
+/* ── NeueBit Bold ── */
+@font-face {
+  font-family: 'NeueBit';
+  src: url('/fonts/NeueBit-Bold.woff2') format('woff2'),
+       url('/fonts/NeueBit-Bold.woff') format('woff'),
+       url('/fonts/NeueBit-Bold.ttf') format('truetype'),
+       url('/fonts/NeueBit-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── Base styles ── */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--color-ink);
+  background-color: var(--color-paper);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── NeueBit headings ── */
+h1, h2, h3 {
+  font-family: 'NeueBit', monospace;
+  font-weight: 700;
+  text-transform: uppercase;
+  -webkit-font-smoothing: none;
+  image-rendering: pixelated;
+  line-height: 1.1;
+}
+
+/* ── Monospace chrome ── */
+.font-chrome {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ── Links ── */
+a {
+  color: var(--color-ink);
+  text-decoration-color: var(--color-line);
+  text-underline-offset: 3px;
+  transition: color 0.15s, text-decoration-color 0.15s;
+}
+
+a:hover {
+  color: var(--color-moss);
+  text-decoration-color: var(--color-moss);
+}
+
+a:focus-visible {
+  outline: 2px solid var(--color-moss);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* ── Selection ── */
+::selection {
+  background-color: var(--color-paper-shade);
+  color: var(--color-ink);
+}
+
+/* ── Map styles ── */
+.world-map svg {
+  width: 100%;
+  height: auto;
+}
+
+.world-map path {
+  fill: var(--color-paper-shade);
+  stroke: var(--color-line);
+  stroke-width: 0.4px;
+  transition: fill 0.2s;
+}
+
+.world-map path.visited {
+  fill: var(--color-moss);
+  cursor: pointer;
+}
+
+.world-map path.lived {
+  fill: var(--color-berry);
+  cursor: pointer;
+}
+
+.world-map path.visited:hover,
+.world-map path.lived:hover {
+  opacity: 0.8;
+}
+
+.map-tooltip {
+  position: fixed;
+  background: var(--color-ink);
+  color: var(--color-paper);
+  padding: 4px 10px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-radius: 3px;
+  pointer-events: none;
+  z-index: 50;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.map-tooltip.visible {
+  opacity: 1;
+}

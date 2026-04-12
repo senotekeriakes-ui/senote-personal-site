@@ -1,0 +1,22 @@
+---
+import Base from '../layouts/Base.astro';
+import TopBar from '../components/TopBar.astro';
+import TravelsMap from '../components/TravelsMap.astro';
+import Colophon from '../components/Colophon.astro';
+---
+
+<Base title="Travels — Senote's Garden" description="25 countries across 5 continents. A map of everywhere I've been.">
+  <TopBar />
+
+  <main class="max-w-[720px] mx-auto px-5 py-8">
+    <h1 class="text-4xl mb-2">PLACES I'VE WANDERED</h1>
+    <p class="text-ink-soft leading-relaxed mb-8">
+      I grew up between Saudi Arabia, Egypt, and Australia. At 23 I burned out after one year of practice during COVID,
+      took 8 months solo through Latin America, and came back to build. Here's everywhere I've been.
+    </p>
+
+    <TravelsMap />
+
+    <Colophon />
+  </main>
+</Base>
