@@ -41,14 +41,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* ── NeueBit headings ── */
+/* ── Headings ── */
 h1, h2, h3 {
-  font-family: 'NeueBit', monospace;
-  font-weight: 700;
-  text-transform: uppercase;
-  -webkit-font-smoothing: none;
-  image-rendering: pixelated;
-  line-height: 1.1;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  line-height: 1.2;
 }
 
 /* ── Monospace chrome ── */
