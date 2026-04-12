@@ -36,8 +36,8 @@ export const NOTES: Note[] = [
     readTime: 5,
   },
   {
-    title: 'The case for loupe-mounted cameras',
-    slug: 'loupe-cameras',
+    title: 'The case for recording dental treatment',
+    slug: 'recording-dental-treatment',
     date: '2026-01-30',
     status: 'seedling',
     readTime: 3,

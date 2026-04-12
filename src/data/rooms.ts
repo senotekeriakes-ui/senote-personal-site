@@ -19,7 +19,7 @@ export const ROOMS: Room[] = [
     name: 'apollonia',
     slug: 'apollonia',
     status: 'growing',
-    description: 'Building a 4K loupe camera with an AR roadmap. Hardware, optics, firmware.',
+    description: 'Building a 4K camera that records dental treatment. Hardware, optics, firmware.',
   },
   {
     emoji: '🤖',
