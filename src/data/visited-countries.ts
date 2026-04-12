@@ -1,6 +1,7 @@
 export const VISITED = {
   SA: { name: 'Saudi Arabia', type: 'lived' },
-  EG: { name: 'Egypt', type: 'visited' },
+  AU: { name: 'Australia', type: 'lived' },
+  EG: { name: 'Egypt', type: 'lived' },
   AE: { name: 'UAE', type: 'visited' },
   OM: { name: 'Oman', type: 'visited' },
   CN: { name: 'China', type: 'visited' },
