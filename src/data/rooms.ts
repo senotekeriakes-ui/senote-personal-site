@@ -1,4 +1,4 @@
-export interface Room {
+export interface SideQuest {
   emoji: string;
   name: string;
   slug: string;
@@ -6,7 +6,7 @@ export interface Room {
   description: string;
 }
 
-export const ROOMS: Room[] = [
+export const SIDE_QUESTS: SideQuest[] = [
   {
     emoji: '🦷',
     name: 'clinical',

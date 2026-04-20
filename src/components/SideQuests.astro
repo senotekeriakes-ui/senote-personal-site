@@ -1,0 +1,33 @@
+---
+import { SIDE_QUESTS } from '../data/rooms';
+
+const statusColors = {
+  evergreen: 'text-moss',
+  growing: 'text-amber-600',
+  seedling: 'text-berry',
+} as const;
+---
+
+<section id="side-quests">
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+    {SIDE_QUESTS.map((quest) => (
+      <a
+        href={`#${quest.slug}`}
+        class="group flex gap-3 p-4 rounded-sm border border-transparent no-underline transition-all duration-150 hover:translate-x-0.5 hover:bg-paper-soft hover:border-line-soft"
+      >
+        <span class="text-xl shrink-0" aria-hidden="true">{quest.emoji}</span>
+        <div class="min-w-0">
+          <div class="flex items-baseline gap-2">
+            <span class="text-lg font-semibold uppercase">
+              {quest.name}
+            </span>
+            <span class={`font-chrome ${statusColors[quest.status]}`}>
+              {quest.status}
+            </span>
+          </div>
+          <p class="text-sm text-ink-soft mt-0.5 mb-0 leading-snug">{quest.description}</p>
+        </div>
+      </a>
+    ))}
+  </div>
+</section>
