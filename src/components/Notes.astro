@@ -1,7 +1,7 @@
 ---
-import { fetchMediumNotes, formatNoteDate } from '../data/notes';
+import { fetchAllNotes, formatNoteDate } from '../data/notes';
 
-const notes = await fetchMediumNotes();
+const notes = await fetchAllNotes();
 ---
 
 <section id="notes">
