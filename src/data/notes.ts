@@ -4,6 +4,7 @@ export interface Note {
   date: string; // ISO format
   status: 'evergreen' | 'growing' | 'seedling';
   readTime: number; // minutes
+  url?: string; // external link (e.g. Medium), omit for on-site posts
 }
 
 export const NOTES: Note[] = [

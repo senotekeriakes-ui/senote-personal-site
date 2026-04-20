@@ -10,7 +10,7 @@ import { NOTES, formatNoteDate } from '../data/notes';
           {formatNoteDate(note.date)}
         </span>
         <div class="min-w-0">
-          <a href={`#${note.slug}`} class="text-[15px] font-medium">
+          <a href={note.url ?? `#${note.slug}`} class="text-[15px] font-medium" {...(note.url ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
             {note.title}
           </a>
           <span class="font-chrome text-ink-faint ml-2">
