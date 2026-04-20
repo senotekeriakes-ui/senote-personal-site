@@ -1,49 +1,43 @@
+import { XMLParser } from 'fast-xml-parser';
+
 export interface Note {
   title: string;
   slug: string;
   date: string; // ISO format
-  status: 'evergreen' | 'growing' | 'seedling';
-  readTime: number; // minutes
-  url?: string; // external link (e.g. Medium), omit for on-site posts
+  readTime?: number; // minutes
+  url?: string; // external link (e.g. Medium)
 }
 
-export const NOTES: Note[] = [
-  {
-    title: 'Why I left clinical dentistry (and came back)',
-    slug: 'why-i-left-clinical',
-    date: '2026-04-08',
-    status: 'growing',
-    readTime: 6,
-  },
-  {
-    title: 'Building hardware as a solo founder',
-    slug: 'building-hardware-solo',
-    date: '2026-03-22',
-    status: 'seedling',
-    readTime: 4,
-  },
-  {
-    title: 'Eight months in Latin America',
-    slug: 'latin-america',
-    date: '2026-03-10',
-    status: 'evergreen',
-    readTime: 8,
-  },
-  {
-    title: 'How DentalScribe handles ADA codes',
-    slug: 'dentalscribe-ada-codes',
-    date: '2026-02-18',
-    status: 'growing',
-    readTime: 5,
-  },
-  {
-    title: 'The case for recording dental treatment',
-    slug: 'recording-dental-treatment',
-    date: '2026-01-30',
-    status: 'seedling',
-    readTime: 3,
-  },
-];
+const MEDIUM_FEED_URL = 'https://medium.com/feed/@senote';
+
+export async function fetchMediumNotes(): Promise<Note[]> {
+  try {
+    const res = await fetch(MEDIUM_FEED_URL);
+    const xml = await res.text();
+    const parser = new XMLParser();
+    const feed = parser.parse(xml);
+    const items = feed?.rss?.channel?.item ?? [];
+
+    return (Array.isArray(items) ? items : [items]).map((item: any) => {
+      const date = new Date(item.pubDate);
+      const slug = item.link?.split('/').pop()?.split('-').slice(0, -1).join('-') || 'post';
+      // Estimate read time from content length (~250 words/min)
+      const wordCount = (item['content:encoded'] || '').replace(/<[^>]+>/g, '').split(/\s+/).length;
+      const readTime = Math.max(1, Math.round(wordCount / 250));
+
+      return {
+        title: item.title,
+        slug,
+        date: date.toISOString().slice(0, 10),
+        readTime,
+        url: item.link,
+      };
+    });
+  } catch (e) {
+    console.error('Failed to fetch Medium feed:', e);
+    return [];
+  }
+}
 
 // Format date as "apr 08" style
 export function formatNoteDate(isoDate: string): string {
