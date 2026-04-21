@@ -18,12 +18,6 @@ const MANUAL_NOTES: Note[] = [
     date: '2023-09-05',
     url: 'https://www.filmslop.com/reviews/mad-men?rq=mad%20men',
   },
-  {
-    title: 'Can the Coptic diaspora revive a dying Coptic language?',
-    slug: 'coptic-language',
-    date: '2023-01-01',
-    url: 'https://www.newarab.com/features/can-coptic-diaspora-revive-dying-coptic-language',
-  },
 ];
 
 async function fetchMediumFeed(): Promise<Note[]> {
